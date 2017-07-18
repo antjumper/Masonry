@@ -24,20 +24,21 @@ static CGFloat const kArrayExampleIncrement = 10.0;
     if (!self) return nil;
     
     UIButton *raiseButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [raiseButton setTitle:@"Raise" forState:UIControlStateNormal];
+    [raiseButton setTitle:@"Raise-11111111111111" forState:UIControlStateNormal];
     [raiseButton addTarget:self action:@selector(raiseAction) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:raiseButton];
     
     UIButton *centerButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [centerButton setTitle:@"Center" forState:UIControlStateNormal];
+    [centerButton setTitle:@"Center-222222222" forState:UIControlStateNormal];
     [centerButton addTarget:self action:@selector(centerAction) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:centerButton];
 
     UIButton *lowerButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [lowerButton setTitle:@"Lower" forState:UIControlStateNormal];
+    [lowerButton setTitle:@"Lower-3333333333" forState:UIControlStateNormal];
     [lowerButton addTarget:self action:@selector(lowerAction) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:lowerButton];
     
+    //因为存在文本所以不应设置 右 宽 高
     [lowerButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).with.offset(10.0);
     }];
@@ -72,6 +73,7 @@ static CGFloat const kArrayExampleIncrement = 10.0;
     [self setNeedsUpdateConstraints];
 }
 
+//this is Apple's recommended place for adding/updating constraints
 - (void)updateConstraints {
     [self.buttonViews updateConstraints:^(MASConstraintMaker *make) {
         make.baseline.equalTo(self.mas_centerY).with.offset(self.offset);

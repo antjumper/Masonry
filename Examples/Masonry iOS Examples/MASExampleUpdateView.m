@@ -34,6 +34,9 @@
     return self;
 }
 
+//返回view是否是约束布局模式,ios6，返回值决定了是否是autoLayout布局模式。使用autolayout返回YES
+
+//否则当系统没有调用 -updateConstraints 的时候，你可能会遇到奇怪的 bug。
 + (BOOL)requiresConstraintBasedLayout
 {
     return YES;

@@ -69,7 +69,7 @@
 
     [blueView mas_makeConstraints:^(MASConstraintMaker *make) {
         [self.animatableConstraints addObjectsFromArray:@[
-            make.edges.equalTo(superview).insets(paddingInsets).priorityLow(),
+            make.edges.equalTo(superview).insets(paddingInsets).priorityLow(),//这个返回的是 MASConstraint  类型
         ]];
 
         make.height.equalTo(greenView.mas_height);
@@ -78,7 +78,10 @@
 
     return self;
 }
-
+//-(void)willMoveToSuperview:(UIView *)newSuperview - 在一个子视图将要被添加到另一个视图的时候发送此消息;
+//-(void)willMoveToWindow:(UIWindow *)newWindow - 在一个视图（或者它的超视图）将要被添加到window的时候发送;
+//-(void)didMoveToSuperview - 把一个视图插入到视图层级之后发送此消息;
+//-(void)didMoveToWindow - 当视图获得它的window属性集的时候发送此消息.
 - (void)didMoveToWindow {
     [self layoutIfNeeded];
 

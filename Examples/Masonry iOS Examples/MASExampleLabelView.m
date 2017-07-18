@@ -45,7 +45,9 @@ static UIEdgeInsets const kPadding = {10, 10, 10, 10};
     }];
 
     [self.shortLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.longLabel.lastBaseline);
+        
+        //基线的理解   还有就是 有蚊子的话 不用设置高度了 文本会撑起文本高度
+        make.baseline.equalTo(self.longLabel.baseline);
         make.right.equalTo(self.right).insets(kPadding);
     }];
 
@@ -64,7 +66,8 @@ static UIEdgeInsets const kPadding = {10, 10, 10, 10};
     width -= CGRectGetMinX(self.longLabel.frame);
     self.longLabel.preferredMaxLayoutWidth = width;
 
-    // need to layoutSubviews again as frames need to recalculated with preferredLayoutWidth
+    // need to layoutSubviews again as frames need to recalculated with preferredLayoutWidth     // 设置preferredLayoutWidth后，需要重新布局
+
     [super layoutSubviews];
 }
 

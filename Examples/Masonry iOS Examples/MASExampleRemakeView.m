@@ -44,6 +44,8 @@
 // this is Apple's recommended place for adding/updating constraints
 - (void)updateConstraints {
     
+    // 这里使用update也是一样的。
+    // remake会将之前的全部移除，然后重新添加
     [self.movingButton remakeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(@(100));
         make.height.equalTo(@(100));
@@ -65,11 +67,15 @@
 - (void)toggleButtonPosition {
     self.topLeft = !self.topLeft;
     
+    // 告诉self.view约束需要更新
+
     // tell constraints they need updating
     [self setNeedsUpdateConstraints];
     
+     // 调用此方法告诉self.view检测是否需要更新约束，若需要则更新，下面添加动画效果才起作用
     // update constraints now so we can animate the change
     [self updateConstraintsIfNeeded];
+    
     
     [UIView animateWithDuration:0.4 animations:^{
         [self layoutIfNeeded];

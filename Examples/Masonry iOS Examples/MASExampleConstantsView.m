@@ -29,6 +29,13 @@
     //example of using constants
     
     [purpleView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        
+//        make.top.greaterThanOrEqualTo(superview.top).offset(padding);
+//        make.left.equalTo(superview.left).offset(padding);
+//        make.bottom.equalTo(blueView.top).offset(-padding);
+//        make.right.equalTo(redView.left).offset(-padding);
+
         make.top.equalTo(@20);
         make.left.equalTo(@20);
         make.bottom.equalTo(@-20);
@@ -38,8 +45,8 @@
     // auto-boxing macros allow you to simply use scalars and structs, they will be wrapped automatically
     
     [orangeView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(CGPointMake(0, 50));
-        make.size.equalTo(CGSizeMake(200, 100));
+        make.center.equalTo(CGPointMake(0, 50)); //这里（）里面的值代表相对于父视图的位置
+        make.size.equalTo(CGSizeMake(200, 100)); //这里的（）里面的值代表自身的size
     }];
     
     return self;

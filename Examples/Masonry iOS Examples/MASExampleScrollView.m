@@ -17,6 +17,8 @@
  *  for another approach see https://github.com/bizz84/MVScrollViewAutoLayout
  */
 
+
+//scrollView  不确定布局的话 那么就 先给 scrollView一个 contentView framex相等  然后根据view设置 之后设置contentView的bootom等于lastView的bottom
 @interface MASExampleScrollView ()
 @property (strong, nonatomic) UIScrollView* scrollView;
 @end

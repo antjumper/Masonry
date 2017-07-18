@@ -35,6 +35,7 @@
     UIView *superview = self;
     int padding = 10;
 
+     //offset 左偏移是负  右偏移是正
     //if you want to use Masonry without the mas_ prefix
     //define MAS_SHORTHAND before importing Masonry.h see Masonry iOS Examples-Prefix.pch
     [greenView makeConstraints:^(MASConstraintMaker *make) {

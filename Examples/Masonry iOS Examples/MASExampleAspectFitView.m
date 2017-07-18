@@ -46,7 +46,7 @@
         // Layout top and bottom views to each take up half of the window
         [self addSubview:self.topView];
         [self.topView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.and.top.equalTo(self);
+            make.left.right.and.top.equalTo(self);//这里的left,right,top代表与self一致
         }];
         
         [self addSubview:self.bottomView];
@@ -59,10 +59,12 @@
         // Inner views are configured for aspect fit with ratio of 3:1
         [self.topView addSubview:self.topInnerView];
         [self.topInnerView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.width.equalTo(self.topInnerView.mas_height).multipliedBy(3);
+            make.width.equalTo(self.topInnerView.mas_height).multipliedBy(3);//代表宽度是自身高度的3：1
+            
+            //使用multipliedBy必须是对同一个控件本身，比如，上面的代码中，我们都是对bottomInnerView.mas_width本身的，如果修改成相对于其它控件，会出问题。
             
             make.width.and.height.lessThanOrEqualTo(self.topView);
-            make.width.and.height.equalTo(self.topView).with.priorityLow();
+            make.width.and.height.equalTo(self.topView).with.priorityLow();//自身的宽高等于self.topView的宽高，但是优先级低
             
             make.center.equalTo(self.topView);
         }];
