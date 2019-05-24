@@ -7,7 +7,7 @@
 //
 
 #import "MASExampleScrollView.h"
-
+#import "TPKeyboardAvoidingScrollView.h"
 /**
  *  UIScrollView and Auto Layout don't play very nicely together see
  *  https://developer.apple.com/library/ios/technotes/tn2154/_index.html
@@ -20,7 +20,7 @@
 
 //scrollView  不确定布局的话 那么就 先给 scrollView一个 contentView framex相等  然后根据view设置 之后设置contentView的bootom等于lastView的bottom
 @interface MASExampleScrollView ()
-@property (strong, nonatomic) UIScrollView* scrollView;
+@property (strong, nonatomic) TPKeyboardAvoidingScrollView* scrollView;
 @end
 
 @implementation MASExampleScrollView
@@ -29,7 +29,7 @@
     self = [super init];
     if (!self) return nil;
     
-    UIScrollView *scrollView = UIScrollView.new;
+    TPKeyboardAvoidingScrollView *scrollView = TPKeyboardAvoidingScrollView.new;
     self.scrollView = scrollView;
     scrollView.backgroundColor = [UIColor grayColor];
     [self addSubview:scrollView];
@@ -55,7 +55,7 @@
     CGFloat height = 25;
     
     for (int i = 0; i < 10; i++) {
-        UIView *view = UIView.new;
+        UITextField *view = UITextField.new;
         view.backgroundColor = [self randomColor];
         [contentView addSubview:view];
         
